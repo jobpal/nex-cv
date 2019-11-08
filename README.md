@@ -1,6 +1,8 @@
 # nex-cv
 
-Please refer to this paper for motivation, description, and validation: https://arxiv.org/abs/1906.01910
+Please refer to this paper for motivation, description, and validation: https://www.aclweb.org/anthology/W19-4110/
+
+This blog post may be a quicker read: https://medium.com/jobpal-dev/plausible-negative-examples-for-better-multi-class-classifier-evaluation-d8e8cb2422db
 
 **Abstract.** We describe and validate  a metric for estimating multi-class classifier performance based on cross-validation and adapted for improvement of small, unbalanced natural-language datasets used in chatbot design. Our experiences draw upon building recruitment chatbots that mediate communication between job-seekers and recruiters by exposing the ML/NLP dataset to the recruiting team. Evaluation approaches must be understandable to various stakeholders, and useful for improving chatbot performance. The metric, `nex-cv`, uses negative examples in the evaluation of text classification, and fulfils three requirements. First, it is useful: we describe how this metric can be used and acted upon by non-developer staff. Second, it is not overly optimistic. Third, it allows model-agnostic comparison. We validate the metric based on seven recruitment-domain-specific datasets in English and German over the course of one year of chatbot monitoring and improvements.
 
