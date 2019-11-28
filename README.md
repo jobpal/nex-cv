@@ -45,6 +45,19 @@ pp2f.close()
 
 **Functional testing.** Although the `nex-cv` is based on CV, and in the case where both `other_min_prop` nor `min_category_size` are `0`, the evaluation result (with `n_retries=5`) should be almost the same as the result of 5-fold cross-validation.
 
+You can also use sequential evaluation using:
+
+```python
+seq_eval = SequentialEvaluator(
+    classifier=classifier,
+    max_samples=10, # Number of examples to include in the results for inspection
+    classification_threshold=0.5 # When confidence is below this, any guess is suppressed
+)
+``` 
+
+The results track the model performance (run time, accuracy, f1) over time. The dataset should be prepared 
+in the following form `y = [{"intent_id": intent_id, "created": datetime.datetime}, ...]`.
+
 ## Implementation
 
 All necessary evaluation code is in `nex_cv`, but only an abstract client definition is provided. Wrap any classification API as shown belowl; a small test utility is also provided:

@@ -1,5 +1,6 @@
 from datetime import datetime
 from nex_cv.data_providers import NegativeExamplesDatasetProvider
+from nex_cv.data_providers import TimeSeqDatasetProvider
 from nex_cv.evaluation_strategies import IntentEvaluationStrategy
 
 
@@ -86,3 +87,16 @@ class NexCVEvaluator(Evaluator):
             *args,
             **kwargs)
 
+
+class SequentialEvaluator(Evaluator):
+
+    def __init__(self, classifier, classification_threshold, max_samples, *args, **kwargs):
+        super().__init__(
+            classifier=classifier,
+            dataset_provider=TimeSeqDatasetProvider(0.5, max_added_examples=500),
+            evaluation_strategy=IntentEvaluationStrategy(
+                classification_threshold=classification_threshold,
+                include_samples=[],  # include all examples
+                max_samples=max_samples),
+            *args,
+            **kwargs)
