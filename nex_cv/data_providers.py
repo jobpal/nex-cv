@@ -166,9 +166,7 @@ class TimeSeqDatasetProvider(TestingDatasetProvider):
         """
         self.min_examples_ratio = min(min_examples_ratio, 0.8)
         self.max_added_examples = max_added_examples
-        self.n_steps = n_steps
-        if self.n_steps <= 0:
-            self.n_steps = 1
+        self.n_steps = max(n_steps, 1)
 
         self.test_on_all = test_on_all
         self.test_step = int(1. / test_ratio)
@@ -184,11 +182,9 @@ class TimeSeqDatasetProvider(TestingDatasetProvider):
         """
 
         try:
-            d = a.get(date_key)
-            return datetime.timestamp(d)
+            return datetime.timestamp(a.get(date_key))
         except:
-            pass
-        return None
+            return None
 
     @staticmethod
     def resolve_intent(a, intent_key):
@@ -199,11 +195,9 @@ class TimeSeqDatasetProvider(TestingDatasetProvider):
         :return:
         """
         try:
-            intent = a.get(intent_key)
-            return intent
+            return a.get(intent_key)
         except:
-            pass
-        return None
+            return None
 
     @staticmethod
     def sort_dataset_by_date(X, y, date_key, return_timestamps=False):
