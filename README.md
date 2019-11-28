@@ -45,7 +45,7 @@ pp2f.close()
 
 **Functional testing.** Although the `nex-cv` is based on CV, and in the case where both `other_min_prop` nor `min_category_size` are `0`, the evaluation result (with `n_retries=5`) should be almost the same as the result of 5-fold cross-validation.
 
-You can also use sequential evaluation using:
+You can also use sequential evaluation by defining:
 
 ```python
 seq_eval = SequentialEvaluator(
